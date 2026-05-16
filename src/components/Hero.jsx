@@ -4,99 +4,62 @@ export default function Hero() {
   const [ref, isVisible] = useScrollReveal(0.1);
 
   return (
-    <section
-      id="home"
-      ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-    >
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        {/* Gradient orbs */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#0066FF] rounded-full opacity-[0.07] blur-[120px] animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#00D4FF] rounded-full opacity-[0.05] blur-[100px] animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0044CC] rounded-full opacity-[0.04] blur-[150px]" />
-        
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
-
-        {/* Floating shapes */}
-        <div className="absolute top-20 right-20 w-4 h-4 border-2 border-[#0066FF]/30 rotate-45 animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-40 left-[15%] w-3 h-3 bg-[#00D4FF]/20 rounded-full animate-float" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-32 right-[20%] w-5 h-5 border-2 border-[#0066FF]/20 rounded-full animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-[60%] left-[10%] w-2 h-8 bg-gradient-to-b from-[#0066FF]/20 to-transparent rounded-full animate-float" style={{ animationDelay: '4s' }} />
-      </div>
-
-      <div className="section-container relative z-10 text-center">
-        <div className={`transition-all duration-1000 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass mb-8 text-sm">
-            <span className="w-2 h-2 bg-[#00CC88] rounded-full animate-pulse" />
-            <span className="text-[#8888AA]">Available for New Projects</span>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6 max-w-5xl mx-auto">
-            We Build{' '}
-            <span className="gradient-text">Powerful Websites</span>
-            <br />
-            & Unique{' '}
-            <span className="gradient-text">Brand Identities</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-[#8888AA] max-w-2xl mx-auto mb-10 leading-relaxed">
-            Professional web development, logo design, and digital solutions 
-            for modern businesses. We transform your vision into digital reality.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <a href="#contact" className="btn-primary text-base py-4 px-8 rounded-xl flex items-center gap-3 no-underline">
-              <span>Start Your Project</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <a href="#portfolio" className="btn-outline text-base py-4 px-8 rounded-xl flex items-center gap-3 no-underline">
-              <span>View Portfolio</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-            </a>
-          </div>
-
-          {/* Stats Row */}
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-            {[
-              { value: '150+', label: 'Projects Delivered' },
-              { value: '98%', label: 'Client Satisfaction' },
-              { value: '5+', label: 'Years Experience' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
-                <div className="text-sm text-[#8888AA]">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+    <section id="home" ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-gradient-to-br from-white via-white to-orange-50">
+      {/* Decorative orange swoosh in top-right */}
+      <div className="absolute top-0 right-0 w-[60%] h-[70%] pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-full h-full">
+          <svg viewBox="0 0 800 600" className="w-full h-full" preserveAspectRatio="none">
+            <path d="M400,0 C600,0 800,100 800,200 C800,350 650,400 500,350 C350,300 300,400 400,500 C500,600 700,550 800,600 L800,0 Z" fill="#E8772E" opacity="0.15"/>
+            <path d="M500,0 C650,50 800,150 800,250 C800,400 600,350 500,300 C400,250 350,350 450,450 C550,550 750,500 800,550 L800,0 Z" fill="#F59E0B" opacity="0.1"/>
+          </svg>
         </div>
       </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0A0A0F] to-transparent" />
+      <div className="section-container relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className={`transition-all duration-1000 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}>
+            {/* Clients badge */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="flex -space-x-2">
+                {[1,2,3,4].map(i => (
+                  <div key={i} className={`w-10 h-10 rounded-full border-2 border-white shadow-md ${['bg-blue-400','bg-green-400','bg-purple-400','bg-orange-400'][i-1]}`}></div>
+                ))}
+                <div className="w-10 h-10 rounded-full bg-green-500 border-2 border-white shadow-md flex items-center justify-center text-white text-sm font-bold">+</div>
+              </div>
+              <p className="text-sm text-gray-600 leading-tight">Clients satisfaits<br/>et fidèles</p>
+            </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-xs text-[#8888AA] tracking-widest uppercase">Scroll</span>
-        <svg className="w-5 h-5 text-[#0066FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-navy leading-[1.1] mb-6">
+              Création Site web à{' '}
+              <span className="text-orange">Rabat</span> &{' '}
+              <span className="italic-accent">Agence Marketing</span>
+            </h1>
+
+            <p className="text-gray-600 text-lg leading-relaxed mb-4 max-w-lg">
+              Agence digitale à Rabat spécialisée en création de site web, SEO et marketing digital, dédiée à développer votre présence en ligne et à faire croître votre marque.
+            </p>
+
+            <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-1">
+                {[1,2,3,4,5].map(i => (
+                  <span key={i} className="text-xl">⭐</span>
+                ))}
+              </div>
+              <span className="text-sm text-gray-500 font-semibold">5+ ans d'expertise</span>
+            </div>
+
+            <a href="tel:0782587835" className="btn-orange text-base py-4 px-8">
+              Appelez-nous
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </div>
+
+          {/* Right — Hero Image */}
+          <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'animate-fadeInRight' : 'opacity-0'}`}>
+            <img src="/hero_businessman.png" alt="Expert en création de sites web" className="relative z-10 w-full max-w-lg mx-auto drop-shadow-2xl" />
+          </div>
+        </div>
       </div>
     </section>
   );

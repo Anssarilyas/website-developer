@@ -2,77 +2,83 @@ import { useScrollReveal } from '../hooks';
 
 const plans = [
   {
-    name: 'Starter',
-    price: '499',
-    desc: 'Perfect for small businesses and startups.',
-    badge: null,
-    features: ['Single Page Website','Responsive Design','Basic SEO Setup','Contact Form','3 Revisions','1 Month Support'],
-    excluded: ['Custom Animations','E-commerce Features','Priority Support'],
-    cta: 'Get Started',
+    name: 'Pack Starter',
+    price: '2500',
+    badge: 'Pack Starter',
+    badgeColor: 'bg-gray-700',
+    features: ['5 Pages Web', 'Site web dynamique', 'Site adapté a tous les écrans', 'Page des services', 'Nom de Domaine 1 an', 'Hébergement 1 an', 'Page de contact', 'Intégration réseaux sociaux', 'Intégration sur Google Maps'],
+    cta: 'Choisir ce Pack',
+    cardBg: 'bg-white',
     highlighted: false,
   },
   {
-    name: 'Professional',
-    price: '999',
-    desc: 'Ideal for growing businesses needing a comprehensive solution.',
-    badge: 'Most Popular',
-    features: ['Multi-Page Website (up to 7)','Custom UI/UX Design','Advanced SEO','Logo Design','Contact & Lead Forms','Social Media Integration','Custom Animations','5 Revisions','3 Months Support'],
-    excluded: ['E-commerce Features'],
-    cta: 'Choose Professional',
+    name: 'Pack eCommerce',
+    price: '3900',
+    badge: 'Pack eCommerce',
+    badgeColor: 'bg-gradient-to-r from-blue-500 to-purple-500',
+    features: ['Boutique en ligne dynamique', "Page d'accueil avec produits", 'Boutique adapté a tous les écrans', 'Intégration de 30 Produits', 'Nom de Domaine 1 an', 'Hébergement 1 an', 'Page de contact', 'Intégration réseaux sociaux', 'Inclusion de Google Maps'],
+    cta: 'Choisir ce Pack',
+    cardBg: 'bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600',
     highlighted: true,
   },
   {
-    name: 'Premium',
-    price: '1,999',
-    desc: 'Complete digital solution with the best features.',
-    badge: 'Best Value',
-    features: ['Unlimited Pages','Premium UI/UX Design','Full SEO Package','Complete Brand Identity','E-commerce Integration','Admin Dashboard','Custom Animations','Blog System','Analytics Integration','Unlimited Revisions','6 Months Support','Priority Support'],
-    excluded: [],
-    cta: 'Go Premium',
+    name: 'Pack Premium',
+    price: '6000',
+    badge: 'Pack Premium',
+    badgeColor: 'bg-green-600',
+    features: ['10 Pages Web maximum', 'Site web dynamique', 'Site adapté a tous les écrans', 'Page des services', 'Nom de Domaine 1 an', 'Hébergement 1 an', 'Page de contact', 'Intégration réseaux sociaux', 'Inclusion de Google Maps'],
+    cta: 'Choisir ce Pack',
+    cardBg: 'bg-white',
     highlighted: false,
   },
 ];
 
 export default function Pricing() {
   const [ref, isVisible] = useScrollReveal(0.1);
+
   return (
-    <section id="pricing" className="py-24 md:py-32 relative" ref={ref}>
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#0066FF] rounded-full opacity-[0.03] blur-[150px]" />
+    <section id="pricing" className="py-24 md:py-32 bg-white relative" ref={ref}>
       <div className="section-container">
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-          <span className="inline-block text-[#0066FF] text-sm font-semibold tracking-wider uppercase mb-4">Pricing Plans</span>
-          <h2 className="section-title">Choose Your <span className="gradient-text">Plan</span></h2>
-          <p className="section-subtitle mx-auto">Transparent pricing with no hidden fees.</p>
+          <div className="inline-block border border-orange rounded-full px-6 py-2 text-sm font-semibold text-navy mb-4">
+            ✦ Nos Packs Création Sites Web ✦
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-navy mb-4">
+            Des solutions simples et<br/>complètes pour créer votre site
+          </h2>
+          <p className="text-xl text-gray-400">web selon vos besoins.</p>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {plans.map((plan, i) => (
-            <div key={i} className={`relative rounded-2xl p-8 transition-all duration-700 ${plan.highlighted ? 'bg-gradient-to-b from-[#0066FF]/10 to-[#12121A] border-2 border-[#0066FF]/40 md:scale-105 shadow-2xl shadow-[#0066FF]/10' : 'card'} ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: `${i * 150}ms` }}>
-              {plan.badge && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white text-xs font-bold uppercase tracking-wider">{plan.badge}</div>}
-              <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-              <p className="text-sm text-[#8888AA] mb-6">{plan.desc}</p>
-              <div className="mb-8">
-                <div className="flex items-baseline gap-1"><span className="text-sm text-[#8888AA]">$</span><span className="text-5xl font-black gradient-text">{plan.price}</span></div>
-                <span className="text-sm text-[#8888AA]">per project</span>
+            <div
+              key={i}
+              className={`relative rounded-3xl p-8 transition-all duration-700 ${plan.highlighted ? `${plan.cardBg} text-white md:scale-105 shadow-2xl` : `${plan.cardBg} border border-gray-200 shadow-lg`} ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}
+              style={{ animationDelay: `${i * 150}ms` }}
+            >
+              {/* Badge */}
+              <div className={`inline-block ${plan.badgeColor} text-white text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-wider`}>{plan.badge}</div>
+
+              {/* Price */}
+              <div className="mb-6">
+                <div className="flex items-end gap-1">
+                  <span className={`text-5xl font-black ${plan.highlighted ? 'text-white' : 'text-navy'}`}>{plan.price}</span>
+                  <span className={`text-sm ${plan.highlighted ? 'text-white/70' : 'text-gray-400'} mb-2`}>Dhs</span>
+                </div>
               </div>
+
+              {/* Features */}
               <div className="space-y-3 mb-8">
                 {plan.features.map((f, j) => (
                   <div key={j} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#0066FF]/10 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3 h-3 text-[#0066FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                    <span className="text-sm text-[#CCCCDD]">{f}</span>
-                  </div>
-                ))}
-                {plan.excluded.map((f, j) => (
-                  <div key={`x${j}`} className="flex items-center gap-3 opacity-40">
-                    <div className="w-5 h-5 rounded-full bg-[#2A2A3A] flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3 h-3 text-[#8888AA]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
-                    </div>
-                    <span className="text-sm text-[#8888AA] line-through">{f}</span>
+                    <svg className={`w-4 h-4 flex-shrink-0 ${plan.highlighted ? 'text-green-300' : 'text-green-500'}`} fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                    <span className={`text-sm ${plan.highlighted ? 'text-white/90' : 'text-gray-600'}`}>{f}</span>
                   </div>
                 ))}
               </div>
-              <a href="#contact" className={`block text-center py-4 px-6 rounded-xl font-semibold text-sm transition-all duration-300 no-underline ${plan.highlighted ? 'btn-primary w-full' : 'border-2 border-[#2A2A3A] text-white hover:border-[#0066FF] hover:text-[#0066FF]'}`}>{plan.cta}</a>
+
+              {/* CTA */}
+              <a href="#contact" className={`block text-center py-4 px-6 rounded-full font-semibold text-sm transition-all duration-300 no-underline ${plan.highlighted ? 'bg-white text-navy hover:bg-gray-100' : 'btn-orange w-full justify-center'}`}>{plan.cta}</a>
             </div>
           ))}
         </div>
